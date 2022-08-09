@@ -15,7 +15,9 @@ fun dateSort(list: MutableList<Film>): List<Film> {
             insertedFilm = list[i]
             insertedIndex = i
 
-            while (insertedIndex >= interval && insertedFilm.releaseYear < list[insertedIndex - interval].releaseYear) {
+            while (insertedIndex >= interval && (insertedFilm.releaseYear ?: 0)
+                < (list[insertedIndex - interval].releaseYear ?: 0)
+            ) {
                 list[insertedIndex] = list[insertedIndex - interval]
                 insertedIndex -= interval
             }
@@ -29,7 +31,7 @@ fun dateSort(list: MutableList<Film>): List<Film> {
 
 fun fullNameDirector(list: MutableList<Film>): List<Film> {
     list.indices.forEach {
-        var name = list[it].directorName
+        var name = list[it].directorName ?: "Anonymous"
         val nameList = name.split(" ").reversed()
         nameList.indices.forEach { i ->
             if (i > 0) {

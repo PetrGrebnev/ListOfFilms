@@ -1,5 +1,6 @@
 package com.example.films.screen.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -24,13 +25,14 @@ class FilmsRecyclerViewAdapter(
         listFilms[position].let { film ->
             holder.bind(film)
             holder.itemView.setOnClickListener {
-                onClick(film.title)
+                onClick(film.title?: "Unknown film")
             }
         }
     }
 
     override fun getItemCount(): Int = listFilms.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setList(list: List<Film>) {
         this.listFilms = list as MutableList<Film>
         notifyDataSetChanged()
