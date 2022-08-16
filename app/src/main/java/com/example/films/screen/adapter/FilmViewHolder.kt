@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.films.databinding.ItemElementFilmsBinding
 import com.example.films.models.Actor
 import com.example.films.models.Film
-import com.example.films.utils.getActor
+import com.example.films.utils.toStringActor
 
 class FilmViewHolder(
     private val binding: ItemElementFilmsBinding,
@@ -16,7 +16,7 @@ class FilmViewHolder(
         binding.apply {
             nameFilm.text = item.title + "(${item.releaseYear})"
             nameDirector.text = "Режиссер: ${item.directorName}"
-            fullNameActors.text = getActor(item.actors ?:
+            fullNameActors.text = toStringActor(item.actors ?:
             listOf(Actor("Bad actor"), Actor("good actor")))
         }
     }

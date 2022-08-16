@@ -31,6 +31,6 @@
         android:layout_gravity="center"
         android:text="ERROR"
         android:textColor="#B71C1C"
-        android:textSize="40dp" />
+        android:textSize="40sp" />
 
 </FrameLayout>

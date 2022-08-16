@@ -27,7 +27,7 @@
                 android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 tools:text="Фильм Дюна был нажат" />
         </LinearLayout>
 
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Closed"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:background="@color/white"/>
 
     </LinearLayout>

@@ -4,33 +4,16 @@ import com.example.films.models.Actor
 import com.example.films.models.Film
 
 fun dateSort(list: MutableList<Film>): List<Film> {
-    var interval = 1
-    var insertedFilm: Film
-    var insertedIndex: Int
-    while (interval < list.size / 3) {
-        interval = 3 * interval + 1
-    }
-    while (interval > 0) {
-        for (i in interval until list.size) {
-            insertedFilm = list[i]
-            insertedIndex = i
-
-            while (insertedIndex >= interval && (insertedFilm.releaseYear ?: 0)
-                < (list[insertedIndex - interval].releaseYear ?: 0)
-            ) {
-                list[insertedIndex] = list[insertedIndex - interval]
-                insertedIndex -= interval
-            }
-
-            list[insertedIndex] = insertedFilm
-        }
-        interval = (interval - 1) / 3
+    list.sortBy {
+        it.releaseYear
     }
     return list
 }
 
 fun fullNameDirector(list: MutableList<Film>): List<Film> {
     list.indices.forEach {
+//        var nameOne = list[it].directorName?.substringAfterLast(" ")
+//        nameOne += list[it].directorName?.format("%.2s", list[it].directorName)
         var name = list[it].directorName ?: "Anonymous"
         val nameList = name.split(" ").reversed()
         nameList.indices.forEach { i ->
@@ -41,25 +24,12 @@ fun fullNameDirector(list: MutableList<Film>): List<Film> {
             }
         }
         list[it].directorName = name
-        list[it].actors = duplicateDeletion(list[it].actors as MutableList<Actor>)
+        list[it].actors = list[it].actors?.distinct()
     }
     return list
 }
 
-fun duplicateDeletion(list: MutableList<Actor>): List<Actor> {
-    val mapActors = mutableSetOf<Actor>()
-    (list.indices).forEach { actor ->
-        mapActors.add(list[actor])
-    }
-    val newList = mutableListOf<Actor>()
-    for (i in 0 until mapActors.size) {
-        newList.add(mapActors.elementAt(i))
-    }
-    mapActors.clear()
-    return newList
-}
-
-fun getActor(list: List<Actor>): String {
+fun toStringActor(list: List<Actor>): String {
     var str = "Актеры: "
     (list.indices).forEach {
         str += "${list[it].actorName}, "
