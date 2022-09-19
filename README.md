@@ -30,3 +30,14 @@ when clicking on the RecyclerView element, a dialog box must appear with the fol
 
 ### JSON data
 [films.json](https://raw.githubusercontent.com/constanta-android-dev/intership-wellcome-task/main/films.json)
+
+## Done
+
+No internet connection
+![image](https://user-images.githubusercontent.com/95710980/190977786-b64f1b6a-8634-4200-924d-3489c127f659.png)
+
+Getting a list and displaying a sorted list
+![image](https://user-images.githubusercontent.com/95710980/190977957-7669bc10-9096-4336-ab23-246e11ff238d.png)
+
+Dialog window
+![image](https://user-images.githubusercontent.com/95710980/190978096-22f5c091-f868-4c05-91ff-b01561492159.png)
